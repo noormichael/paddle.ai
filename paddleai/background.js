@@ -17,7 +17,7 @@ function displayContents() {
 		var last_line = last_line[last_line.length-1];
 		if(last_word !== last_line){
 			chrome.browserAction.setBadgeText({"text": (++count).toString()});
-			new Notification("You have a lot of important messages!", {
+			new Notification("You received ham!", {
 		    	icon: '48.png',
 				body: last_line
 			});
@@ -38,7 +38,7 @@ chrome.tabs.onSelectionChanged.addListener(function(tabId, props) {
 
 chrome.browserAction.onClicked.addListener(function(tabId, props) {
 	count = 0;
-	chrome.browserAction.setBadgeText({"text": count.toString(), tabId: selectedId});  
+	chrome.browserAction.setBadgeText({"text": count.toString()});  
 
     reader.open('get', 'out.txt', false); 
     reader.onreadystatechange = function(){
